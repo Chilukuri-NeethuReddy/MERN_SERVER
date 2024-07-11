@@ -22,7 +22,7 @@ jobs:
 
       - name: Fetch all branches
         run: git fetch --all
-
+c
       - name: Merge main into testing
         run: |
           git checkout testing

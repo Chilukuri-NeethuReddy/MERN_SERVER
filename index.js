@@ -12,7 +12,7 @@ app.use(cors())
 
 const url = 'mongodb+srv://chilukurineethureddy2004:QIdPrjSgSP9JjkUu@cluster0.hi0dqlx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 //connecting my express app to my mongodb server
-mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{console.log('DB connected')}).catch((err)=>console.log(err));
+mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true}).then().catch();
 
 //start my apollo express server
 const server = new ApolloServer({typeDefs,resolvers});
@@ -21,7 +21,9 @@ app.get('/users', async (req,res)=> {
         const {data,errors} = await server.executeOperation({
             query:gql`query{
             getUsers{
+            id
             name email
+            password
             }
             }`//we will write out queries here
         });
@@ -59,11 +61,7 @@ async function StartServer() {
     app.listen(port,()=> {
         console.log('Server live');
     })
-}
-function Testing(){
-    return 1;
-}
-function Test2(){return false;}
-Testing();
-Test2();
+} 
+
 StartServer();
+module.exports=app;

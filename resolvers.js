@@ -12,7 +12,9 @@ const resolvers ={
               return user;
             }
             throw new Error('Invalid email or password');
-          }
+          },
+        getUsers: async()=> {return await User.find()}
+
         
     },
     Mutation:{

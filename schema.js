@@ -12,7 +12,8 @@ input createUserInput {
     password: String!
 }
 type Query {
-    getUser(id:ID!):User
+    getUser(id:ID!):User,
+    getUsers:[User],
 
     login(email: String!, password: String!): User
 }

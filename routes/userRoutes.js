@@ -4,7 +4,7 @@ const {ApolloServer,gql} = require('apollo-server-express');
 const typeDefs = require('../schema');
 const resolvers = require('../resolvers');
 const server = new ApolloServer({typeDefs,resolvers});
-router.get('/',async (req,res)=>{
+router.get('/users',async (req,res)=>{
     try{
         const {data,errors}= await  server.executeOperation({
             query:gql`query{ getUsers{id name email password} }`
@@ -93,6 +93,5 @@ router.post('/login', async (req, res) => {
       res.status(500).json({ error: err.message });
     }
   });
-
 
 module.exports =router
